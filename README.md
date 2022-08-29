@@ -199,7 +199,7 @@ def load_state_dict_with_low_memory(model: nn.Module, state_dict: Dict[str, torc
         param_dtype = getattr(submodule, param_name).dtype
         val = val.to(param_dtype)
         # create a new parameter
-        new_val = torch.nn.Parameter(val)
+        new_val = torch.nn.Parameter(val, requires_grad=False))
         setattr(submodule, param_name, new_val)
 
 ```
